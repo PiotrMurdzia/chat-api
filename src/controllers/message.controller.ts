@@ -29,8 +29,8 @@ export const getUsersForSidebar = async (
 };
 
 export const getMessages = async (
-  req: AuthenticatedRequest,
-  res: Response
+  req: any,
+  res: any
 ) => {
   try {
     const { id: userToChatId } = req.params;
@@ -51,8 +51,8 @@ export const getMessages = async (
 };
 
 export const sendMessage = async (
-  req: AuthenticatedRequest,
-  res: Response
+  req: any,
+  res: any
 ) => {
   try {
     const { text } = req.body;
