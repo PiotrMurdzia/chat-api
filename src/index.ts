@@ -11,6 +11,7 @@ import messageRoutes from "./routes/message.route.js";
 import { version } from "./params/params.js";
 
 const app = express();
+
 // Odpalenie serwera
 const server = createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
@@ -22,10 +23,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: "*", credentials: true }));
 
+// Public routes
 app.use("/api/auth", authRoutes);
 app.get("/api/health", healthRouters);
 app.use("/api/messages", messageRoutes);
 
+// Socket.io connection with client side app
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 
